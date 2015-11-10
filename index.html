@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>JSPM StartUp</title>
+  <meta charset="UTF-8">
+  <title>JSPM StartUp</title>
 
-    <script>console.time('Init');</script>
-    <script src="./jspm_packages/system.js"></script>
-    <script src="./config.js"></script>
-    <script>
-        System.import('./js/startup');
-    </script>
+  <script>console.time('Init');</script>
+  <script src="./jspm_packages/system.js"></script>
+  <script src="./config.js"></script>
+  <script>
+    System.import('./modules/base/startup');
+  </script>
 </head>
 <body>
+  <div class="container">
     <h1>StartUp JSPM App</h1>
+    <button type="button" class="btn btn-primary">Load module</button>
+  </div>
 </body>
 </html>
