@@ -4,7 +4,9 @@
   "description": "Create an app based on JSPM",
   "main": "index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "bundle": "jspm bundle --inject modules/base/startup - modules/content/init",
+    "unbundle": "jspm unbundle"
   },
   "author": "",
   "license": "MIT",
