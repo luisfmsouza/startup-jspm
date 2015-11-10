@@ -10,10 +10,12 @@ console.log('jquery: ' + $.fn.jquery);
 console.log('underscore: ' + _.VERSION);
 console.log('backbone: ' + Backbone.VERSION);
 
-import {createTabs} from '../tabs/tabs.js';
-
 $('.btn-primary').on('click', function () {
-  createTabs();
+  console.time('Module');
+
+  System.import('./modules/content/init.js').then(function(e){
+    e.createContent();
+  });
 })
 
 console.timeEnd('Init');
