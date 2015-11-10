@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "bundleAll": "jspm bundle --inject modules/base/startup + modules/content/init",
     "bundleBase": "jspm bundle --inject modules/base/startup - modules/content/init",
+    "bundleContent": "jspm bundle --inject modules/content/init - modules/base/startup build-content.js",
     "unbundle": "jspm unbundle"
   },
   "author": "",
