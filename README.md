@@ -1,1 +1,1 @@
-Start up creating [JSPM](http://jspm.io/) app.
+Start creating [JSPM](http://jspm.io/) app.
