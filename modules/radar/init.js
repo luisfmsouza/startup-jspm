@@ -13,5 +13,5 @@ export function createContent() {
 
   $('#content').html(html);
 
-  console.timeEnd('Module Radar');
+  console.timeEnd('Module radar');
 }
