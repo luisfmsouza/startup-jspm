@@ -12,29 +12,6 @@ System.config({
     "github:*": "jspm_packages/github/*",
     "npm:*": "jspm_packages/npm/*"
   },
-  bundles: {
-    "build-content.js": [
-      "modules/content/init.js",
-      "github:components/handlebars.js@4.0.4",
-      "github:components/handlebars.js@4.0.4/handlebars",
-      "modules/content/contentData.json!github:systemjs/plugin-json@0.1.0",
-      "modules/content/contentTemplate.html!github:systemjs/plugin-text@0.0.3"
-    ],
-    "build.js": [
-      "modules/base/startup.js",
-      "github:components/jquery@2.1.4",
-      "npm:underscore@1.8.3",
-      "npm:backbone@1.2.3",
-      "npm:backbone@1.2.3/backbone",
-      "github:components/jquery@2.1.4/jquery",
-      "npm:underscore@1.8.3/underscore",
-      "github:twbs/bootstrap@3.3.5/css/bootstrap.css!github:systemjs/plugin-css@0.1.19",
-      "github:jspm/nodelibs-process@0.1.2",
-      "github:jspm/nodelibs-process@0.1.2/index",
-      "npm:process@0.11.2",
-      "npm:process@0.11.2/browser"
-    ]
-  },
 
   map: {
     "babel": "npm:babel-core@5.8.33",
@@ -44,6 +21,7 @@ System.config({
     "clean-css": "npm:clean-css@3.4.6",
     "core-js": "npm:core-js@1.2.6",
     "css": "github:systemjs/plugin-css@0.1.19",
+    "es6-shim": "github:es-shims/es6-shim@0.33.11",
     "handlebars": "github:components/handlebars.js@4.0.4",
     "jquery": "github:components/jquery@2.1.4",
     "json": "github:systemjs/plugin-json@0.1.0",
