@@ -1,124 +1,1469 @@
 "bundle";
 System.register("github:twbs/bootstrap@3.3.5/css/bootstrap.css!github:systemjs/plugin-css@0.1.19", [], function() { return { setters: [], execute: function() {} } });
 
-System.registerDynamic("npm:process@0.11.2/browser", [], true, function(req, exports, module) {
+System.registerDynamic("npm:reflect-metadata@0.1.2/Reflect", ["@empty", "github:jspm/nodelibs-process@0.1.2"], true, function(req, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  var process = module.exports = {};
-  var queue = [];
-  var draining = false;
-  var currentQueue;
-  var queueIndex = -1;
-  function cleanUpNextTick() {
-    draining = false;
-    if (currentQueue.length) {
-      queue = currentQueue.concat(queue);
-    } else {
-      queueIndex = -1;
-    }
-    if (queue.length) {
-      drainQueue();
-    }
-  }
-  function drainQueue() {
-    if (draining) {
-      return;
-    }
-    var timeout = setTimeout(cleanUpNextTick);
-    draining = true;
-    var len = queue.length;
-    while (len) {
-      currentQueue = queue;
-      queue = [];
-      while (++queueIndex < len) {
-        if (currentQueue) {
-          currentQueue[queueIndex].run();
+  (function(process) {
+    "use strict";
+    var Reflect;
+    (function(Reflect) {
+      var functionPrototype = Object.getPrototypeOf(Function);
+      var _Map = typeof Map === "function" ? Map : CreateMapPolyfill();
+      var _Set = typeof Set === "function" ? Set : CreateSetPolyfill();
+      var _WeakMap = typeof WeakMap === "function" ? WeakMap : CreateWeakMapPolyfill();
+      var __Metadata__ = new _WeakMap();
+      function decorate(decorators, target, targetKey, targetDescriptor) {
+        if (!IsUndefined(targetDescriptor)) {
+          if (!IsArray(decorators)) {
+            throw new TypeError();
+          } else if (!IsObject(target)) {
+            throw new TypeError();
+          } else if (IsUndefined(targetKey)) {
+            throw new TypeError();
+          } else if (!IsObject(targetDescriptor)) {
+            throw new TypeError();
+          }
+          targetKey = ToPropertyKey(targetKey);
+          return DecoratePropertyWithDescriptor(decorators, target, targetKey, targetDescriptor);
+        } else if (!IsUndefined(targetKey)) {
+          if (!IsArray(decorators)) {
+            throw new TypeError();
+          } else if (!IsObject(target)) {
+            throw new TypeError();
+          }
+          targetKey = ToPropertyKey(targetKey);
+          return DecoratePropertyWithoutDescriptor(decorators, target, targetKey);
+        } else {
+          if (!IsArray(decorators)) {
+            throw new TypeError();
+          } else if (!IsConstructor(target)) {
+            throw new TypeError();
+          }
+          return DecorateConstructor(decorators, target);
         }
       }
-      queueIndex = -1;
-      len = queue.length;
-    }
-    currentQueue = null;
-    draining = false;
-    clearTimeout(timeout);
+      Reflect.decorate = decorate;
+      function metadata(metadataKey, metadataValue) {
+        function decorator(target, targetKey) {
+          if (!IsUndefined(targetKey)) {
+            if (!IsObject(target)) {
+              throw new TypeError();
+            }
+            targetKey = ToPropertyKey(targetKey);
+            OrdinaryDefineOwnMetadata(metadataKey, metadataValue, target, targetKey);
+          } else {
+            if (!IsConstructor(target)) {
+              throw new TypeError();
+            }
+            OrdinaryDefineOwnMetadata(metadataKey, metadataValue, target, undefined);
+          }
+        }
+        return decorator;
+      }
+      Reflect.metadata = metadata;
+      function defineMetadata(metadataKey, metadataValue, target, targetKey) {
+        if (!IsObject(target)) {
+          throw new TypeError();
+        } else if (!IsUndefined(targetKey)) {
+          targetKey = ToPropertyKey(targetKey);
+        }
+        return OrdinaryDefineOwnMetadata(metadataKey, metadataValue, target, targetKey);
+      }
+      Reflect.defineMetadata = defineMetadata;
+      function hasMetadata(metadataKey, target, targetKey) {
+        if (!IsObject(target)) {
+          throw new TypeError();
+        } else if (!IsUndefined(targetKey)) {
+          targetKey = ToPropertyKey(targetKey);
+        }
+        return OrdinaryHasMetadata(metadataKey, target, targetKey);
+      }
+      Reflect.hasMetadata = hasMetadata;
+      function hasOwnMetadata(metadataKey, target, targetKey) {
+        if (!IsObject(target)) {
+          throw new TypeError();
+        } else if (!IsUndefined(targetKey)) {
+          targetKey = ToPropertyKey(targetKey);
+        }
+        return OrdinaryHasOwnMetadata(metadataKey, target, targetKey);
+      }
+      Reflect.hasOwnMetadata = hasOwnMetadata;
+      function getMetadata(metadataKey, target, targetKey) {
+        if (!IsObject(target)) {
+          throw new TypeError();
+        } else if (!IsUndefined(targetKey)) {
+          targetKey = ToPropertyKey(targetKey);
+        }
+        return OrdinaryGetMetadata(metadataKey, target, targetKey);
+      }
+      Reflect.getMetadata = getMetadata;
+      function getOwnMetadata(metadataKey, target, targetKey) {
+        if (!IsObject(target)) {
+          throw new TypeError();
+        } else if (!IsUndefined(targetKey)) {
+          targetKey = ToPropertyKey(targetKey);
+        }
+        return OrdinaryGetOwnMetadata(metadataKey, target, targetKey);
+      }
+      Reflect.getOwnMetadata = getOwnMetadata;
+      function getMetadataKeys(target, targetKey) {
+        if (!IsObject(target)) {
+          throw new TypeError();
+        } else if (!IsUndefined(targetKey)) {
+          targetKey = ToPropertyKey(targetKey);
+        }
+        return OrdinaryMetadataKeys(target, targetKey);
+      }
+      Reflect.getMetadataKeys = getMetadataKeys;
+      function getOwnMetadataKeys(target, targetKey) {
+        if (!IsObject(target)) {
+          throw new TypeError();
+        } else if (!IsUndefined(targetKey)) {
+          targetKey = ToPropertyKey(targetKey);
+        }
+        return OrdinaryOwnMetadataKeys(target, targetKey);
+      }
+      Reflect.getOwnMetadataKeys = getOwnMetadataKeys;
+      function deleteMetadata(metadataKey, target, targetKey) {
+        if (!IsObject(target)) {
+          throw new TypeError();
+        } else if (!IsUndefined(targetKey)) {
+          targetKey = ToPropertyKey(targetKey);
+        }
+        var metadataMap = GetOrCreateMetadataMap(target, targetKey, false);
+        if (IsUndefined(metadataMap)) {
+          return false;
+        }
+        if (!metadataMap.delete(metadataKey)) {
+          return false;
+        }
+        if (metadataMap.size > 0) {
+          return true;
+        }
+        var targetMetadata = __Metadata__.get(target);
+        targetMetadata.delete(targetKey);
+        if (targetMetadata.size > 0) {
+          return true;
+        }
+        __Metadata__.delete(target);
+        return true;
+      }
+      Reflect.deleteMetadata = deleteMetadata;
+      function DecorateConstructor(decorators, target) {
+        for (var i = decorators.length - 1; i >= 0; --i) {
+          var decorator = decorators[i];
+          var decorated = decorator(target);
+          if (!IsUndefined(decorated)) {
+            if (!IsConstructor(decorated)) {
+              throw new TypeError();
+            }
+            target = decorated;
+          }
+        }
+        return target;
+      }
+      function DecoratePropertyWithDescriptor(decorators, target, propertyKey, descriptor) {
+        for (var i = decorators.length - 1; i >= 0; --i) {
+          var decorator = decorators[i];
+          var decorated = decorator(target, propertyKey, descriptor);
+          if (!IsUndefined(decorated)) {
+            if (!IsObject(decorated)) {
+              throw new TypeError();
+            }
+            descriptor = decorated;
+          }
+        }
+        return descriptor;
+      }
+      function DecoratePropertyWithoutDescriptor(decorators, target, propertyKey) {
+        for (var i = decorators.length - 1; i >= 0; --i) {
+          var decorator = decorators[i];
+          decorator(target, propertyKey);
+        }
+      }
+      function GetOrCreateMetadataMap(target, targetKey, create) {
+        var targetMetadata = __Metadata__.get(target);
+        if (!targetMetadata) {
+          if (!create) {
+            return undefined;
+          }
+          targetMetadata = new _Map();
+          __Metadata__.set(target, targetMetadata);
+        }
+        var keyMetadata = targetMetadata.get(targetKey);
+        if (!keyMetadata) {
+          if (!create) {
+            return undefined;
+          }
+          keyMetadata = new _Map();
+          targetMetadata.set(targetKey, keyMetadata);
+        }
+        return keyMetadata;
+      }
+      function OrdinaryHasMetadata(MetadataKey, O, P) {
+        var hasOwn = OrdinaryHasOwnMetadata(MetadataKey, O, P);
+        if (hasOwn) {
+          return true;
+        }
+        var parent = GetPrototypeOf(O);
+        if (parent !== null) {
+          return OrdinaryHasMetadata(MetadataKey, parent, P);
+        }
+        return false;
+      }
+      function OrdinaryHasOwnMetadata(MetadataKey, O, P) {
+        var metadataMap = GetOrCreateMetadataMap(O, P, false);
+        if (metadataMap === undefined) {
+          return false;
+        }
+        return Boolean(metadataMap.has(MetadataKey));
+      }
+      function OrdinaryGetMetadata(MetadataKey, O, P) {
+        var hasOwn = OrdinaryHasOwnMetadata(MetadataKey, O, P);
+        if (hasOwn) {
+          return OrdinaryGetOwnMetadata(MetadataKey, O, P);
+        }
+        var parent = GetPrototypeOf(O);
+        if (parent !== null) {
+          return OrdinaryGetMetadata(MetadataKey, parent, P);
+        }
+        return undefined;
+      }
+      function OrdinaryGetOwnMetadata(MetadataKey, O, P) {
+        var metadataMap = GetOrCreateMetadataMap(O, P, false);
+        if (metadataMap === undefined) {
+          return undefined;
+        }
+        return metadataMap.get(MetadataKey);
+      }
+      function OrdinaryDefineOwnMetadata(MetadataKey, MetadataValue, O, P) {
+        var metadataMap = GetOrCreateMetadataMap(O, P, true);
+        metadataMap.set(MetadataKey, MetadataValue);
+      }
+      function OrdinaryMetadataKeys(O, P) {
+        var ownKeys = OrdinaryOwnMetadataKeys(O, P);
+        var parent = GetPrototypeOf(O);
+        if (parent === null) {
+          return ownKeys;
+        }
+        var parentKeys = OrdinaryMetadataKeys(parent, P);
+        if (parentKeys.length <= 0) {
+          return ownKeys;
+        }
+        if (ownKeys.length <= 0) {
+          return parentKeys;
+        }
+        var set = new _Set();
+        var keys = [];
+        for (var _i = 0; _i < ownKeys.length; _i++) {
+          var key = ownKeys[_i];
+          var hasKey = set.has(key);
+          if (!hasKey) {
+            set.add(key);
+            keys.push(key);
+          }
+        }
+        for (var _a = 0; _a < parentKeys.length; _a++) {
+          var key = parentKeys[_a];
+          var hasKey = set.has(key);
+          if (!hasKey) {
+            set.add(key);
+            keys.push(key);
+          }
+        }
+        return keys;
+      }
+      function OrdinaryOwnMetadataKeys(target, targetKey) {
+        var metadataMap = GetOrCreateMetadataMap(target, targetKey, false);
+        var keys = [];
+        if (metadataMap) {
+          metadataMap.forEach(function(_, key) {
+            return keys.push(key);
+          });
+        }
+        return keys;
+      }
+      function IsUndefined(x) {
+        return x === undefined;
+      }
+      function IsArray(x) {
+        return Array.isArray(x);
+      }
+      function IsObject(x) {
+        return typeof x === "object" ? x !== null : typeof x === "function";
+      }
+      function IsConstructor(x) {
+        return typeof x === "function";
+      }
+      function IsSymbol(x) {
+        return typeof x === "symbol";
+      }
+      function ToPropertyKey(value) {
+        if (IsSymbol(value)) {
+          return value;
+        }
+        return String(value);
+      }
+      function GetPrototypeOf(O) {
+        var proto = Object.getPrototypeOf(O);
+        if (typeof O !== "function" || O === functionPrototype) {
+          return proto;
+        }
+        if (proto !== functionPrototype) {
+          return proto;
+        }
+        var prototype = O.prototype;
+        var prototypeProto = Object.getPrototypeOf(prototype);
+        if (prototypeProto == null || prototypeProto === Object.prototype) {
+          return proto;
+        }
+        var constructor = prototypeProto.constructor;
+        if (typeof constructor !== "function") {
+          return proto;
+        }
+        if (constructor === O) {
+          return proto;
+        }
+        return constructor;
+      }
+      function CreateMapPolyfill() {
+        var cacheSentinel = {};
+        function Map() {
+          this._keys = [];
+          this._values = [];
+          this._cache = cacheSentinel;
+        }
+        Map.prototype = {
+          get size() {
+            return this._keys.length;
+          },
+          has: function(key) {
+            if (key === this._cache) {
+              return true;
+            }
+            if (this._find(key) >= 0) {
+              this._cache = key;
+              return true;
+            }
+            return false;
+          },
+          get: function(key) {
+            var index = this._find(key);
+            if (index >= 0) {
+              this._cache = key;
+              return this._values[index];
+            }
+            return undefined;
+          },
+          set: function(key, value) {
+            this.delete(key);
+            this._keys.push(key);
+            this._values.push(value);
+            this._cache = key;
+            return this;
+          },
+          delete: function(key) {
+            var index = this._find(key);
+            if (index >= 0) {
+              this._keys.splice(index, 1);
+              this._values.splice(index, 1);
+              this._cache = cacheSentinel;
+              return true;
+            }
+            return false;
+          },
+          clear: function() {
+            this._keys.length = 0;
+            this._values.length = 0;
+            this._cache = cacheSentinel;
+          },
+          forEach: function(callback, thisArg) {
+            var size = this.size;
+            for (var i = 0; i < size; ++i) {
+              var key = this._keys[i];
+              var value = this._values[i];
+              this._cache = key;
+              callback.call(this, value, key, this);
+            }
+          },
+          _find: function(key) {
+            var keys = this._keys;
+            var size = keys.length;
+            for (var i = 0; i < size; ++i) {
+              if (keys[i] === key) {
+                return i;
+              }
+            }
+            return -1;
+          }
+        };
+        return Map;
+      }
+      function CreateSetPolyfill() {
+        var cacheSentinel = {};
+        function Set() {
+          this._map = new _Map();
+        }
+        Set.prototype = {
+          get size() {
+            return this._map.length;
+          },
+          has: function(value) {
+            return this._map.has(value);
+          },
+          add: function(value) {
+            this._map.set(value, value);
+            return this;
+          },
+          delete: function(value) {
+            return this._map.delete(value);
+          },
+          clear: function() {
+            this._map.clear();
+          },
+          forEach: function(callback, thisArg) {
+            this._map.forEach(callback, thisArg);
+          }
+        };
+        return Set;
+      }
+      function CreateWeakMapPolyfill() {
+        var UUID_SIZE = 16;
+        var isNode = typeof global !== "undefined" && Object.prototype.toString.call(global.process) === '[object process]';
+        var nodeCrypto = isNode && req('@empty');
+        var hasOwn = Object.prototype.hasOwnProperty;
+        var keys = {};
+        var rootKey = CreateUniqueKey();
+        function WeakMap() {
+          this._key = CreateUniqueKey();
+        }
+        WeakMap.prototype = {
+          has: function(target) {
+            var table = GetOrCreateWeakMapTable(target, false);
+            if (table) {
+              return this._key in table;
+            }
+            return false;
+          },
+          get: function(target) {
+            var table = GetOrCreateWeakMapTable(target, false);
+            if (table) {
+              return table[this._key];
+            }
+            return undefined;
+          },
+          set: function(target, value) {
+            var table = GetOrCreateWeakMapTable(target, true);
+            table[this._key] = value;
+            return this;
+          },
+          delete: function(target) {
+            var table = GetOrCreateWeakMapTable(target, false);
+            if (table && this._key in table) {
+              return delete table[this._key];
+            }
+            return false;
+          },
+          clear: function() {
+            this._key = CreateUniqueKey();
+          }
+        };
+        function FillRandomBytes(buffer, size) {
+          for (var i = 0; i < size; ++i) {
+            buffer[i] = Math.random() * 255 | 0;
+          }
+        }
+        function GenRandomBytes(size) {
+          if (nodeCrypto) {
+            var data = nodeCrypto.randomBytes(size);
+            return data;
+          } else if (typeof Uint8Array === "function") {
+            var data = new Uint8Array(size);
+            if (typeof crypto !== "undefined") {
+              crypto.getRandomValues(data);
+            } else if (typeof msCrypto !== "undefined") {
+              msCrypto.getRandomValues(data);
+            } else {
+              FillRandomBytes(data, size);
+            }
+            return data;
+          } else {
+            var data = new Array(size);
+            FillRandomBytes(data, size);
+            return data;
+          }
+        }
+        function CreateUUID() {
+          var data = GenRandomBytes(UUID_SIZE);
+          data[6] = data[6] & 0x4f | 0x40;
+          data[8] = data[8] & 0xbf | 0x80;
+          var result = "";
+          for (var offset = 0; offset < UUID_SIZE; ++offset) {
+            var byte = data[offset];
+            if (offset === 4 || offset === 6 || offset === 8) {
+              result += "-";
+            }
+            if (byte < 16) {
+              result += "0";
+            }
+            result += byte.toString(16).toLowerCase();
+          }
+          return result;
+        }
+        function CreateUniqueKey() {
+          var key;
+          do {
+            key = "@@WeakMap@@" + CreateUUID();
+          } while (hasOwn.call(keys, key));
+          keys[key] = true;
+          return key;
+        }
+        function GetOrCreateWeakMapTable(target, create) {
+          if (!hasOwn.call(target, rootKey)) {
+            if (!create) {
+              return undefined;
+            }
+            Object.defineProperty(target, rootKey, {value: Object.create(null)});
+          }
+          return target[rootKey];
+        }
+        return WeakMap;
+      }
+      (function(__global) {
+        if (typeof __global.Reflect !== "undefined") {
+          if (__global.Reflect !== Reflect) {
+            for (var p in Reflect) {
+              __global.Reflect[p] = Reflect[p];
+            }
+          }
+        } else {
+          __global.Reflect = Reflect;
+        }
+      })(typeof window !== "undefined" ? window : typeof WorkerGlobalScope !== "undefined" ? self : typeof global !== "undefined" ? global : Function("return this;")());
+    })(Reflect || (Reflect = {}));
+  })(req('github:jspm/nodelibs-process@0.1.2'));
+  global.define = __define;
+  return module.exports;
+});
+
+System.registerDynamic("npm:reflect-metadata@0.1.2", ["npm:reflect-metadata@0.1.2/Reflect"], true, function(req, exports, module) {
+  ;
+  var global = this,
+      __define = global.define;
+  global.define = undefined;
+  module.exports = req('npm:reflect-metadata@0.1.2/Reflect');
+  global.define = __define;
+  return module.exports;
+});
+
+System.registerDynamic("npm:zone.js@0.5.8/lib/patch/file-reader", ["npm:zone.js@0.5.8/lib/utils"], true, function(req, exports, module) {
+  ;
+  var global = this,
+      __define = global.define;
+  global.define = undefined;
+  'use strict';
+  var utils = req('npm:zone.js@0.5.8/lib/utils');
+  function apply() {
+    utils.patchClass('FileReader');
   }
-  process.nextTick = function(fun) {
-    var args = new Array(arguments.length - 1);
-    if (arguments.length > 1) {
-      for (var i = 1; i < arguments.length; i++) {
-        args[i - 1] = arguments[i];
+  module.exports = {apply: apply};
+  global.define = __define;
+  return module.exports;
+});
+
+System.registerDynamic("npm:zone.js@0.5.8/lib/patch/geolocation", ["npm:zone.js@0.5.8/lib/utils"], true, function(req, exports, module) {
+  ;
+  var global = this,
+      __define = global.define;
+  global.define = undefined;
+  'use strict';
+  var utils = req('npm:zone.js@0.5.8/lib/utils');
+  function apply() {
+    if (global.navigator && global.navigator.geolocation) {
+      utils.patchPrototype(global.navigator.geolocation, ['getCurrentPosition', 'watchPosition']);
+    }
+  }
+  module.exports = {apply: apply};
+  global.define = __define;
+  return module.exports;
+});
+
+System.registerDynamic("npm:zone.js@0.5.8/lib/patch/property-descriptor", ["npm:zone.js@0.5.8/lib/patch/websocket", "npm:zone.js@0.5.8/lib/utils", "npm:zone.js@0.5.8/lib/keys"], true, function(req, exports, module) {
+  ;
+  var global = this,
+      __define = global.define;
+  global.define = undefined;
+  'use strict';
+  var webSocketPatch = req('npm:zone.js@0.5.8/lib/patch/websocket');
+  var utils = req('npm:zone.js@0.5.8/lib/utils');
+  var keys = req('npm:zone.js@0.5.8/lib/keys');
+  var eventNames = 'copy cut paste abort blur focus canplay canplaythrough change click contextmenu dblclick drag dragend dragenter dragleave dragover dragstart drop durationchange emptied ended input invalid keydown keypress keyup load loadeddata loadedmetadata loadstart message mousedown mouseenter mouseleave mousemove mouseout mouseover mouseup pause play playing progress ratechange reset scroll seeked seeking select show stalled submit suspend timeupdate volumechange waiting mozfullscreenchange mozfullscreenerror mozpointerlockchange mozpointerlockerror error webglcontextrestored webglcontextlost webglcontextcreationerror'.split(' ');
+  function apply() {
+    if (utils.isWebWorker()) {
+      return;
+    }
+    var supportsWebSocket = typeof WebSocket !== 'undefined';
+    if (canPatchViaPropertyDescriptor()) {
+      var onEventNames = eventNames.map(function(property) {
+        return 'on' + property;
+      });
+      utils.patchProperties(HTMLElement.prototype, onEventNames);
+      utils.patchProperties(XMLHttpRequest.prototype);
+      if (supportsWebSocket) {
+        utils.patchProperties(WebSocket.prototype);
+      }
+    } else {
+      patchViaCapturingAllTheEvents();
+      utils.patchClass('XMLHttpRequest');
+      if (supportsWebSocket) {
+        webSocketPatch.apply();
       }
     }
-    queue.push(new Item(fun, args));
-    if (queue.length === 1 && !draining) {
-      setTimeout(drainQueue, 0);
+  }
+  function canPatchViaPropertyDescriptor() {
+    if (!Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'onclick') && typeof Element !== 'undefined') {
+      var desc = Object.getOwnPropertyDescriptor(Element.prototype, 'onclick');
+      if (desc && !desc.configurable)
+        return false;
+    }
+    Object.defineProperty(HTMLElement.prototype, 'onclick', {get: function() {
+        return true;
+      }});
+    var elt = document.createElement('div');
+    var result = !!elt.onclick;
+    Object.defineProperty(HTMLElement.prototype, 'onclick', {});
+    return result;
+  }
+  ;
+  var unboundKey = keys.create('unbound');
+  function patchViaCapturingAllTheEvents() {
+    eventNames.forEach(function(property) {
+      var onproperty = 'on' + property;
+      document.addEventListener(property, function(event) {
+        var elt = event.target,
+            bound;
+        while (elt) {
+          if (elt[onproperty] && !elt[onproperty][unboundKey]) {
+            bound = global.zone.bind(elt[onproperty]);
+            bound[unboundKey] = elt[onproperty];
+            elt[onproperty] = bound;
+          }
+          elt = elt.parentElement;
+        }
+      }, true);
+    });
+  }
+  ;
+  module.exports = {apply: apply};
+  global.define = __define;
+  return module.exports;
+});
+
+System.registerDynamic("npm:zone.js@0.5.8/lib/patch/event-target", ["npm:zone.js@0.5.8/lib/utils"], true, function(req, exports, module) {
+  ;
+  var global = this,
+      __define = global.define;
+  global.define = undefined;
+  'use strict';
+  var utils = req('npm:zone.js@0.5.8/lib/utils');
+  function apply() {
+    if (global.EventTarget) {
+      utils.patchEventTargetMethods(global.EventTarget.prototype);
+    } else {
+      var apis = ['ApplicationCache', 'EventSource', 'FileReader', 'InputMethodContext', 'MediaController', 'MessagePort', 'Node', 'Performance', 'SVGElementInstance', 'SharedWorker', 'TextTrack', 'TextTrackCue', 'TextTrackList', 'WebKitNamedFlow', 'Worker', 'WorkerGlobalScope', 'XMLHttpRequest', 'XMLHttpRequestEventTarget', 'XMLHttpRequestUpload'];
+      apis.forEach(function(api) {
+        var proto = global[api] && global[api].prototype;
+        if (proto && proto.addEventListener) {
+          utils.patchEventTargetMethods(proto);
+        }
+      });
+      if (typeof(window) !== 'undefined') {
+        utils.patchEventTargetMethods(window);
+      }
+    }
+  }
+  module.exports = {apply: apply};
+  global.define = __define;
+  return module.exports;
+});
+
+System.registerDynamic("npm:zone.js@0.5.8/lib/patch/websocket", ["npm:zone.js@0.5.8/lib/utils"], true, function(req, exports, module) {
+  ;
+  var global = this,
+      __define = global.define;
+  global.define = undefined;
+  'use strict';
+  var utils = req('npm:zone.js@0.5.8/lib/utils');
+  function apply() {
+    var WS = global.WebSocket;
+    utils.patchEventTargetMethods(WS.prototype);
+    global.WebSocket = function(a, b) {
+      var socket = arguments.length > 1 ? new WS(a, b) : new WS(a);
+      var proxySocket;
+      var onmessageDesc = Object.getOwnPropertyDescriptor(socket, 'onmessage');
+      if (onmessageDesc && onmessageDesc.configurable === false) {
+        proxySocket = Object.create(socket);
+        ['addEventListener', 'removeEventListener', 'send', 'close'].forEach(function(propName) {
+          proxySocket[propName] = function() {
+            return socket[propName].apply(socket, arguments);
+          };
+        });
+      } else {
+        proxySocket = socket;
+      }
+      utils.patchProperties(proxySocket, ['onclose', 'onerror', 'onmessage', 'onopen']);
+      return proxySocket;
+    };
+  }
+  module.exports = {apply: apply};
+  global.define = __define;
+  return module.exports;
+});
+
+System.registerDynamic("npm:zone.js@0.5.8/lib/patch/register-element", ["npm:zone.js@0.5.8/lib/patch/define-property", "npm:zone.js@0.5.8/lib/utils"], true, function(req, exports, module) {
+  ;
+  var global = this,
+      __define = global.define;
+  global.define = undefined;
+  'use strict';
+  var _redefineProperty = req('npm:zone.js@0.5.8/lib/patch/define-property')._redefineProperty;
+  var utils = req('npm:zone.js@0.5.8/lib/utils');
+  function apply() {
+    if (utils.isWebWorker() || !('registerElement' in global.document)) {
+      return;
+    }
+    var _registerElement = document.registerElement;
+    var callbacks = ['createdCallback', 'attachedCallback', 'detachedCallback', 'attributeChangedCallback'];
+    document.registerElement = function(name, opts) {
+      if (opts && opts.prototype) {
+        callbacks.forEach(function(callback) {
+          if (opts.prototype.hasOwnProperty(callback)) {
+            var descriptor = Object.getOwnPropertyDescriptor(opts.prototype, callback);
+            if (descriptor && descriptor.value) {
+              descriptor.value = global.zone.bind(descriptor.value);
+              _redefineProperty(opts.prototype, callback, descriptor);
+            } else {
+              opts.prototype[callback] = global.zone.bind(opts.prototype[callback]);
+            }
+          } else if (opts.prototype[callback]) {
+            opts.prototype[callback] = global.zone.bind(opts.prototype[callback]);
+          }
+        });
+      }
+      return _registerElement.apply(document, [name, opts]);
+    };
+  }
+  module.exports = {apply: apply};
+  global.define = __define;
+  return module.exports;
+});
+
+System.registerDynamic("npm:zone.js@0.5.8/lib/patch/define-property", ["npm:zone.js@0.5.8/lib/keys"], true, function(req, exports, module) {
+  ;
+  var global = this,
+      __define = global.define;
+  global.define = undefined;
+  'use strict';
+  var keys = req('npm:zone.js@0.5.8/lib/keys');
+  var _defineProperty = Object.defineProperty;
+  var _getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
+  var _create = Object.create;
+  var unconfigurablesKey = keys.create('unconfigurables');
+  function apply() {
+    Object.defineProperty = function(obj, prop, desc) {
+      if (isUnconfigurable(obj, prop)) {
+        throw new TypeError('Cannot assign to read only property \'' + prop + '\' of ' + obj);
+      }
+      if (prop !== 'prototype') {
+        desc = rewriteDescriptor(obj, prop, desc);
+      }
+      return _defineProperty(obj, prop, desc);
+    };
+    Object.defineProperties = function(obj, props) {
+      Object.keys(props).forEach(function(prop) {
+        Object.defineProperty(obj, prop, props[prop]);
+      });
+      return obj;
+    };
+    Object.create = function(obj, proto) {
+      if (typeof proto === 'object') {
+        Object.keys(proto).forEach(function(prop) {
+          proto[prop] = rewriteDescriptor(obj, prop, proto[prop]);
+        });
+      }
+      return _create(obj, proto);
+    };
+    Object.getOwnPropertyDescriptor = function(obj, prop) {
+      var desc = _getOwnPropertyDescriptor(obj, prop);
+      if (isUnconfigurable(obj, prop)) {
+        desc.configurable = false;
+      }
+      return desc;
+    };
+  }
+  ;
+  function _redefineProperty(obj, prop, desc) {
+    desc = rewriteDescriptor(obj, prop, desc);
+    return _defineProperty(obj, prop, desc);
+  }
+  ;
+  function isUnconfigurable(obj, prop) {
+    return obj && obj[unconfigurablesKey] && obj[unconfigurablesKey][prop];
+  }
+  function rewriteDescriptor(obj, prop, desc) {
+    desc.configurable = true;
+    if (!desc.configurable) {
+      if (!obj[unconfigurablesKey]) {
+        _defineProperty(obj, unconfigurablesKey, {
+          writable: true,
+          value: {}
+        });
+      }
+      obj[unconfigurablesKey][prop] = true;
+    }
+    return desc;
+  }
+  module.exports = {
+    apply: apply,
+    _redefineProperty: _redefineProperty
+  };
+  global.define = __define;
+  return module.exports;
+});
+
+System.registerDynamic("npm:zone.js@0.5.8/lib/patch/mutation-observer", ["npm:zone.js@0.5.8/lib/keys"], true, function(req, exports, module) {
+  ;
+  var global = this,
+      __define = global.define;
+  global.define = undefined;
+  'use strict';
+  var keys = req('npm:zone.js@0.5.8/lib/keys');
+  var originalInstanceKey = keys.create('originalInstance');
+  var creationZoneKey = keys.create('creationZone');
+  var isActiveKey = keys.create('isActive');
+  function patchClass(className) {
+    var OriginalClass = global[className];
+    if (!OriginalClass)
+      return;
+    global[className] = function(fn) {
+      this[originalInstanceKey] = new OriginalClass(global.zone.bind(fn, true));
+      this[creationZoneKey] = global.zone;
+    };
+    var instance = new OriginalClass(function() {});
+    global[className].prototype.disconnect = function() {
+      var result = this[originalInstanceKey].disconnect.apply(this[originalInstanceKey], arguments);
+      if (this[isActiveKey]) {
+        this[creationZoneKey].dequeueTask();
+        this[isActiveKey] = false;
+      }
+      return result;
+    };
+    global[className].prototype.observe = function() {
+      if (!this[isActiveKey]) {
+        this[creationZoneKey].enqueueTask();
+        this[isActiveKey] = true;
+      }
+      return this[originalInstanceKey].observe.apply(this[originalInstanceKey], arguments);
+    };
+    var prop;
+    for (prop in instance) {
+      (function(prop) {
+        if (typeof global[className].prototype !== undefined) {
+          return;
+        }
+        if (typeof instance[prop] === 'function') {
+          global[className].prototype[prop] = function() {
+            return this[originalInstanceKey][prop].apply(this[originalInstanceKey], arguments);
+          };
+        } else {
+          Object.defineProperty(global[className].prototype, prop, {
+            set: function(fn) {
+              if (typeof fn === 'function') {
+                this[originalInstanceKey][prop] = global.zone.bind(fn);
+              } else {
+                this[originalInstanceKey][prop] = fn;
+              }
+            },
+            get: function() {
+              return this[originalInstanceKey][prop];
+            }
+          });
+        }
+      }(prop));
+    }
+  }
+  ;
+  module.exports = {patchClass: patchClass};
+  global.define = __define;
+  return module.exports;
+});
+
+System.registerDynamic("npm:zone.js@0.5.8/lib/patch/functions", ["npm:zone.js@0.5.8/lib/utils"], true, function(req, exports, module) {
+  ;
+  var global = this,
+      __define = global.define;
+  global.define = undefined;
+  'use strict';
+  var utils = req('npm:zone.js@0.5.8/lib/utils');
+  function patchSetClearFunction(obj, fnNames) {
+    fnNames.map(function(name) {
+      return name[0].toUpperCase() + name.substr(1);
+    }).forEach(function(name) {
+      var setName = 'set' + name;
+      var delegate = obj[setName];
+      if (delegate) {
+        var clearName = 'clear' + name;
+        var ids = {};
+        var bindArgs = setName === 'setInterval' ? utils.bindArguments : utils.bindArgumentsOnce;
+        global.zone[setName] = function(fn) {
+          var id,
+              fnRef = fn;
+          arguments[0] = function() {
+            delete ids[id];
+            return fnRef.apply(this, arguments);
+          };
+          var args = bindArgs(arguments);
+          id = delegate.apply(obj, args);
+          ids[id] = true;
+          return id;
+        };
+        obj[setName] = function() {
+          return global.zone[setName].apply(this, arguments);
+        };
+        var clearDelegate = obj[clearName];
+        global.zone[clearName] = function(id) {
+          if (ids[id]) {
+            delete ids[id];
+            global.zone.dequeueTask();
+          }
+          return clearDelegate.apply(this, arguments);
+        };
+        obj[clearName] = function() {
+          return global.zone[clearName].apply(this, arguments);
+        };
+      }
+    });
+  }
+  ;
+  function patchRequestAnimationFrame(obj, fnNames) {
+    fnNames.forEach(function(name) {
+      var delegate = obj[name];
+      if (delegate) {
+        global.zone[name] = function(fn) {
+          var callZone = global.zone.isRootZone() ? global.zone.fork() : global.zone;
+          if (fn) {
+            arguments[0] = function() {
+              return callZone.run(fn, this, arguments);
+            };
+          }
+          return delegate.apply(obj, arguments);
+        };
+        obj[name] = function() {
+          return global.zone[name].apply(this, arguments);
+        };
+      }
+    });
+  }
+  ;
+  function patchSetFunction(obj, fnNames) {
+    fnNames.forEach(function(name) {
+      var delegate = obj[name];
+      if (delegate) {
+        global.zone[name] = function(fn) {
+          arguments[0] = function() {
+            return fn.apply(this, arguments);
+          };
+          var args = utils.bindArgumentsOnce(arguments);
+          return delegate.apply(obj, args);
+        };
+        obj[name] = function() {
+          return zone[name].apply(this, arguments);
+        };
+      }
+    });
+  }
+  ;
+  function patchFunction(obj, fnNames) {
+    fnNames.forEach(function(name) {
+      var delegate = obj[name];
+      global.zone[name] = function() {
+        return delegate.apply(obj, arguments);
+      };
+      obj[name] = function() {
+        return global.zone[name].apply(this, arguments);
+      };
+    });
+  }
+  ;
+  module.exports = {
+    patchSetClearFunction: patchSetClearFunction,
+    patchSetFunction: patchSetFunction,
+    patchRequestAnimationFrame: patchRequestAnimationFrame,
+    patchFunction: patchFunction
+  };
+  global.define = __define;
+  return module.exports;
+});
+
+System.registerDynamic("npm:zone.js@0.5.8/lib/patch/browser", ["npm:zone.js@0.5.8/lib/patch/functions", "npm:zone.js@0.5.8/lib/patch/promise", "npm:zone.js@0.5.8/lib/patch/mutation-observer", "npm:zone.js@0.5.8/lib/patch/define-property", "npm:zone.js@0.5.8/lib/patch/register-element", "npm:zone.js@0.5.8/lib/patch/websocket", "npm:zone.js@0.5.8/lib/patch/event-target", "npm:zone.js@0.5.8/lib/patch/property-descriptor", "npm:zone.js@0.5.8/lib/patch/geolocation", "npm:zone.js@0.5.8/lib/patch/file-reader"], true, function(req, exports, module) {
+  ;
+  var global = this,
+      __define = global.define;
+  global.define = undefined;
+  'use strict';
+  var fnPatch = req('npm:zone.js@0.5.8/lib/patch/functions');
+  var promisePatch = req('npm:zone.js@0.5.8/lib/patch/promise');
+  var mutationObserverPatch = req('npm:zone.js@0.5.8/lib/patch/mutation-observer');
+  var definePropertyPatch = req('npm:zone.js@0.5.8/lib/patch/define-property');
+  var registerElementPatch = req('npm:zone.js@0.5.8/lib/patch/register-element');
+  var webSocketPatch = req('npm:zone.js@0.5.8/lib/patch/websocket');
+  var eventTargetPatch = req('npm:zone.js@0.5.8/lib/patch/event-target');
+  var propertyDescriptorPatch = req('npm:zone.js@0.5.8/lib/patch/property-descriptor');
+  var geolocationPatch = req('npm:zone.js@0.5.8/lib/patch/geolocation');
+  var fileReaderPatch = req('npm:zone.js@0.5.8/lib/patch/file-reader');
+  function apply() {
+    fnPatch.patchSetClearFunction(global, ['timeout', 'interval', 'immediate']);
+    fnPatch.patchRequestAnimationFrame(global, ['requestAnimationFrame', 'mozRequestAnimationFrame', 'webkitRequestAnimationFrame']);
+    fnPatch.patchFunction(global, ['alert', 'prompt']);
+    eventTargetPatch.apply();
+    propertyDescriptorPatch.apply();
+    promisePatch.apply();
+    mutationObserverPatch.patchClass('MutationObserver');
+    mutationObserverPatch.patchClass('WebKitMutationObserver');
+    definePropertyPatch.apply();
+    registerElementPatch.apply();
+    geolocationPatch.apply();
+    fileReaderPatch.apply();
+  }
+  module.exports = {apply: apply};
+  global.define = __define;
+  return module.exports;
+});
+
+System.registerDynamic("npm:zone.js@0.5.8/lib/utils", ["npm:zone.js@0.5.8/lib/keys"], true, function(req, exports, module) {
+  ;
+  var global = this,
+      __define = global.define;
+  global.define = undefined;
+  'use strict';
+  var keys = req('npm:zone.js@0.5.8/lib/keys');
+  function bindArguments(args) {
+    for (var i = args.length - 1; i >= 0; i--) {
+      if (typeof args[i] === 'function') {
+        args[i] = global.zone.bind(args[i]);
+      }
+    }
+    return args;
+  }
+  ;
+  function bindArgumentsOnce(args) {
+    for (var i = args.length - 1; i >= 0; i--) {
+      if (typeof args[i] === 'function') {
+        args[i] = global.zone.bindOnce(args[i]);
+      }
+    }
+    return args;
+  }
+  ;
+  function patchPrototype(obj, fnNames) {
+    fnNames.forEach(function(name) {
+      var delegate = obj[name];
+      if (delegate) {
+        obj[name] = function() {
+          return delegate.apply(this, bindArguments(arguments));
+        };
+      }
+    });
+  }
+  ;
+  function isWebWorker() {
+    return (typeof document === "undefined");
+  }
+  function patchProperty(obj, prop) {
+    var desc = Object.getOwnPropertyDescriptor(obj, prop) || {
+      enumerable: true,
+      configurable: true
+    };
+    delete desc.writable;
+    delete desc.value;
+    var eventName = prop.substr(2);
+    var _prop = '_' + prop;
+    desc.set = function(fn) {
+      if (this[_prop]) {
+        this.removeEventListener(eventName, this[_prop]);
+      }
+      if (typeof fn === 'function') {
+        this[_prop] = fn;
+        this.addEventListener(eventName, fn, false);
+      } else {
+        this[_prop] = null;
+      }
+    };
+    desc.get = function() {
+      return this[_prop];
+    };
+    Object.defineProperty(obj, prop, desc);
+  }
+  ;
+  function patchProperties(obj, properties) {
+    (properties || (function() {
+      var props = [];
+      for (var prop in obj) {
+        props.push(prop);
+      }
+      return props;
+    }()).filter(function(propertyName) {
+      return propertyName.substr(0, 2) === 'on';
+    })).forEach(function(eventName) {
+      patchProperty(obj, eventName);
+    });
+  }
+  ;
+  var originalFnKey = keys.create('originalFn');
+  var boundFnsKey = keys.create('boundFns');
+  function patchEventTargetMethods(obj) {
+    obj[keys.common.addEventListener] = obj.addEventListener;
+    obj.addEventListener = function(eventName, handler, useCapturing) {
+      var eventType = eventName + (useCapturing ? '$capturing' : '$bubbling');
+      var fn;
+      if (handler.toString() !== "[object FunctionWrapper]") {
+        if (handler.handleEvent) {
+          fn = (function(handler) {
+            return function() {
+              handler.handleEvent.apply(handler, arguments);
+            };
+          })(handler);
+        } else {
+          fn = handler;
+        }
+        handler[originalFnKey] = fn;
+        handler[boundFnsKey] = handler[boundFnsKey] || {};
+        handler[boundFnsKey][eventType] = handler[boundFnsKey][eventType] || zone.bind(fn);
+        arguments[1] = handler[boundFnsKey][eventType];
+      }
+      var target = this || global;
+      return global.zone.addEventListener.apply(target, arguments);
+    };
+    obj[keys.common.removeEventListener] = obj.removeEventListener;
+    obj.removeEventListener = function(eventName, handler, useCapturing) {
+      var eventType = eventName + (useCapturing ? '$capturing' : '$bubbling');
+      if (handler[boundFnsKey] && handler[boundFnsKey][eventType]) {
+        var _bound = handler[boundFnsKey];
+        arguments[1] = _bound[eventType];
+        delete _bound[eventType];
+      }
+      var target = this || global;
+      var result = global.zone.removeEventListener.apply(target, arguments);
+      global.zone.dequeueTask(handler[originalFnKey]);
+      return result;
+    };
+  }
+  ;
+  var originalInstanceKey = keys.create('originalInstance');
+  function patchClass(className) {
+    var OriginalClass = global[className];
+    if (!OriginalClass)
+      return;
+    global[className] = function() {
+      var a = bindArguments(arguments);
+      switch (a.length) {
+        case 0:
+          this[originalInstanceKey] = new OriginalClass();
+          break;
+        case 1:
+          this[originalInstanceKey] = new OriginalClass(a[0]);
+          break;
+        case 2:
+          this[originalInstanceKey] = new OriginalClass(a[0], a[1]);
+          break;
+        case 3:
+          this[originalInstanceKey] = new OriginalClass(a[0], a[1], a[2]);
+          break;
+        case 4:
+          this[originalInstanceKey] = new OriginalClass(a[0], a[1], a[2], a[3]);
+          break;
+        default:
+          throw new Error('what are you even doing?');
+      }
+    };
+    var instance = new OriginalClass();
+    var prop;
+    for (prop in instance) {
+      (function(prop) {
+        if (typeof instance[prop] === 'function') {
+          global[className].prototype[prop] = function() {
+            return this[originalInstanceKey][prop].apply(this[originalInstanceKey], arguments);
+          };
+        } else {
+          Object.defineProperty(global[className].prototype, prop, {
+            set: function(fn) {
+              if (typeof fn === 'function') {
+                this[originalInstanceKey][prop] = global.zone.bind(fn);
+              } else {
+                this[originalInstanceKey][prop] = fn;
+              }
+            },
+            get: function() {
+              return this[originalInstanceKey][prop];
+            }
+          });
+        }
+      }(prop));
+    }
+    for (prop in OriginalClass) {
+      if (prop !== 'prototype' && OriginalClass.hasOwnProperty(prop)) {
+        global[className][prop] = OriginalClass[prop];
+      }
+    }
+  }
+  ;
+  module.exports = {
+    bindArguments: bindArguments,
+    bindArgumentsOnce: bindArgumentsOnce,
+    patchPrototype: patchPrototype,
+    patchProperty: patchProperty,
+    patchProperties: patchProperties,
+    patchEventTargetMethods: patchEventTargetMethods,
+    patchClass: patchClass,
+    isWebWorker: isWebWorker
+  };
+  global.define = __define;
+  return module.exports;
+});
+
+System.registerDynamic("npm:zone.js@0.5.8/lib/patch/promise", ["npm:zone.js@0.5.8/lib/utils"], true, function(req, exports, module) {
+  ;
+  var global = this,
+      __define = global.define;
+  global.define = undefined;
+  'use strict';
+  var utils = req('npm:zone.js@0.5.8/lib/utils');
+  var bindPromiseFn;
+  if (global.Promise) {
+    bindPromiseFn = function(delegate) {
+      return function() {
+        var delegatePromise = delegate.apply(this, arguments);
+        if (delegatePromise instanceof Promise) {
+          return delegatePromise;
+        }
+        return new Promise(function(resolve, reject) {
+          delegatePromise.then(resolve, reject);
+        });
+      };
+    };
+  } else {
+    bindPromiseFn = function(delegate) {
+      return function() {
+        return _patchThenable(delegate.apply(this, arguments));
+      };
+    };
+  }
+  function _patchPromiseFnsOnObject(objectPath, fnNames) {
+    var obj = global;
+    var exists = objectPath.every(function(segment) {
+      obj = obj[segment];
+      return obj;
+    });
+    if (!exists) {
+      return;
+    }
+    fnNames.forEach(function(name) {
+      var fn = obj[name];
+      if (fn) {
+        obj[name] = bindPromiseFn(fn);
+      }
+    });
+  }
+  function _patchThenable(thenable) {
+    var then = thenable.then;
+    thenable.then = function() {
+      var args = utils.bindArguments(arguments);
+      var nextThenable = then.apply(thenable, args);
+      return _patchThenable(nextThenable);
+    };
+    var ocatch = thenable.catch;
+    thenable.catch = function() {
+      var args = utils.bindArguments(arguments);
+      var nextThenable = ocatch.apply(thenable, args);
+      return _patchThenable(nextThenable);
+    };
+    return thenable;
+  }
+  function apply() {
+    if (global.Promise) {
+      utils.patchPrototype(Promise.prototype, ['then', 'catch']);
+      var patchFns = [[[], ['fetch']], [['Response', 'prototype'], ['arrayBuffer', 'blob', 'json', 'text']]];
+      patchFns.forEach(function(objPathAndFns) {
+        _patchPromiseFnsOnObject(objPathAndFns[0], objPathAndFns[1]);
+      });
+    }
+  }
+  module.exports = {
+    apply: apply,
+    bindPromiseFn: bindPromiseFn
+  };
+  global.define = __define;
+  return module.exports;
+});
+
+System.registerDynamic("npm:zone.js@0.5.8/lib/keys", [], true, function(req, exports, module) {
+  ;
+  var global = this,
+      __define = global.define;
+  global.define = undefined;
+  if (typeof Symbol !== 'undefined') {
+    function create(name) {
+      return Symbol(name);
+    }
+  } else {
+    function create(name) {
+      return '_zone$' + name;
+    }
+  }
+  var commonKeys = {
+    addEventListener: create('addEventListener'),
+    removeEventListener: create('removeEventListener')
+  };
+  module.exports = {
+    create: create,
+    common: commonKeys
+  };
+  global.define = __define;
+  return module.exports;
+});
+
+System.registerDynamic("npm:zone.js@0.5.8/lib/core", ["npm:zone.js@0.5.8/lib/keys", "npm:zone.js@0.5.8/lib/patch/promise"], true, function(req, exports, module) {
+  ;
+  var global = this,
+      __define = global.define;
+  global.define = undefined;
+  'use strict';
+  var keys = req('npm:zone.js@0.5.8/lib/keys');
+  function Zone(parentZone, data) {
+    var zone = (arguments.length) ? Object.create(parentZone) : this;
+    zone.parent = parentZone || null;
+    Object.keys(data || {}).forEach(function(property) {
+      var _property = property.substr(1);
+      if (property[0] === '$') {
+        zone[_property] = data[property](parentZone[_property] || function() {});
+      } else if (property[0] === '+') {
+        if (parentZone[_property]) {
+          zone[_property] = function() {
+            var result = parentZone[_property].apply(this, arguments);
+            data[property].apply(this, arguments);
+            return result;
+          };
+        } else {
+          zone[_property] = data[property];
+        }
+      } else if (property[0] === '-') {
+        if (parentZone[_property]) {
+          zone[_property] = function() {
+            data[property].apply(this, arguments);
+            return parentZone[_property].apply(this, arguments);
+          };
+        } else {
+          zone[_property] = data[property];
+        }
+      } else {
+        zone[property] = (typeof data[property] === 'object') ? JSON.parse(JSON.stringify(data[property])) : data[property];
+      }
+    });
+    zone.$id = Zone.nextId++;
+    return zone;
+  }
+  Zone.prototype = {
+    constructor: Zone,
+    fork: function(locals) {
+      this.onZoneCreated();
+      return new Zone(this, locals);
+    },
+    bind: function(fn, skipEnqueue) {
+      if (typeof fn !== 'function') {
+        throw new Error('Expecting function got: ' + fn);
+      }
+      skipEnqueue || this.enqueueTask(fn);
+      var zone = this.isRootZone() ? this : this.fork();
+      return function zoneBoundFn() {
+        return zone.run(fn, this, arguments);
+      };
+    },
+    bindOnce: function(fn) {
+      var boundZone = this;
+      return this.bind(function() {
+        var result = fn.apply(this, arguments);
+        boundZone.dequeueTask(fn);
+        return result;
+      });
+    },
+    isRootZone: function() {
+      return this.parent === null;
+    },
+    run: function run(fn, applyTo, applyWith) {
+      applyWith = applyWith || [];
+      var oldZone = global.zone;
+      global.zone = this;
+      try {
+        this.beforeTask();
+        return fn.apply(applyTo, applyWith);
+      } catch (e) {
+        if (this.onError) {
+          this.onError(e);
+        } else {
+          throw e;
+        }
+      } finally {
+        this.afterTask();
+        global.zone = oldZone;
+      }
+    },
+    onError: null,
+    beforeTask: function() {},
+    onZoneCreated: function() {},
+    afterTask: function() {},
+    enqueueTask: function() {},
+    dequeueTask: function() {},
+    addEventListener: function() {
+      return this[keys.common.addEventListener].apply(this, arguments);
+    },
+    removeEventListener: function() {
+      return this[keys.common.removeEventListener].apply(this, arguments);
     }
   };
-  function Item(fun, array) {
-    this.fun = fun;
-    this.array = array;
-  }
-  Item.prototype.run = function() {
-    this.fun.apply(null, this.array);
-  };
-  process.title = 'browser';
-  process.browser = true;
-  process.env = {};
-  process.argv = [];
-  process.version = '';
-  process.versions = {};
-  function noop() {}
-  process.on = noop;
-  process.addListener = noop;
-  process.once = noop;
-  process.off = noop;
-  process.removeListener = noop;
-  process.removeAllListeners = noop;
-  process.emit = noop;
-  process.binding = function(name) {
-    throw new Error('process.binding is not supported');
-  };
-  process.cwd = function() {
-    return '/';
-  };
-  process.chdir = function(dir) {
-    throw new Error('process.chdir is not supported');
-  };
-  process.umask = function() {
-    return 0;
-  };
+  Zone.nextId = 1;
+  Zone.bindPromiseFn = req('npm:zone.js@0.5.8/lib/patch/promise').bindPromiseFn;
+  module.exports = {Zone: Zone};
   global.define = __define;
   return module.exports;
 });
 
-System.registerDynamic("npm:process@0.11.2", ["npm:process@0.11.2/browser"], true, function(req, exports, module) {
+System.registerDynamic("npm:zone.js@0.5.8/lib/zone", ["npm:zone.js@0.5.8/lib/core", "npm:zone.js@0.5.8/lib/patch/browser"], true, function(req, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  module.exports = req('npm:process@0.11.2/browser');
+  'use strict';
+  var core = req('npm:zone.js@0.5.8/lib/core');
+  var browserPatch = req('npm:zone.js@0.5.8/lib/patch/browser');
+  global.zone = new core.Zone();
+  module.exports = {
+    Zone: core.Zone,
+    zone: global.zone
+  };
+  browserPatch.apply();
   global.define = __define;
   return module.exports;
 });
 
-System.registerDynamic("github:jspm/nodelibs-process@0.1.2/index", ["npm:process@0.11.2"], true, function(req, exports, module) {
+System.registerDynamic("npm:zone.js@0.5.8", ["npm:zone.js@0.5.8/lib/zone"], true, function(req, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  module.exports = System._nodeRequire ? process : req('npm:process@0.11.2');
-  global.define = __define;
-  return module.exports;
-});
-
-System.registerDynamic("github:jspm/nodelibs-process@0.1.2", ["github:jspm/nodelibs-process@0.1.2/index"], true, function(req, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
-  module.exports = req('github:jspm/nodelibs-process@0.1.2/index');
+  module.exports = req('npm:zone.js@0.5.8/lib/zone');
   global.define = __define;
   return module.exports;
 });
@@ -8647,10 +9992,11 @@ define("github:components/jquery@2.1.4", ["github:components/jquery@2.1.4/jquery
 
 _removeDefine();
 })();
-System.register('modules/base/startup.js', ['github:components/jquery@2.1.4', 'npm:underscore@1.8.3', 'npm:backbone@1.2.3', 'github:twbs/bootstrap@3.3.5/css/bootstrap.css!github:systemjs/plugin-css@0.1.19'], function (_export) {
+System.register('modules/base/startup.js', ['github:components/jquery@2.1.4', 'npm:underscore@1.8.3', 'npm:backbone@1.2.3', 'npm:zone.js@0.5.8', 'npm:reflect-metadata@0.1.2', 'npm:angular2@2.0.0-alpha.46/angular2', 'github:twbs/bootstrap@3.3.5/css/bootstrap.css!github:systemjs/plugin-css@0.1.19'], function (_export) {
   'use strict';
 
-  var $, _, Backbone;
+  //if using traceur compiler:
+  var $, _, Backbone, Component, View, bootstrap;
 
   return {
     setters: [function (_githubComponentsJquery214) {
@@ -8659,6 +10005,10 @@ System.register('modules/base/startup.js', ['github:components/jquery@2.1.4', 'n
       _ = _npmUnderscore183['default'];
     }, function (_npmBackbone123) {
       Backbone = _npmBackbone123['default'];
+    }, function (_npmZoneJs058) {}, function (_npmReflectMetadata012) {}, function (_npmAngular2200Alpha46Angular2) {
+      Component = _npmAngular2200Alpha46Angular2.ComponentAnnotation;
+      View = _npmAngular2200Alpha46Angular2.ViewAnnotation;
+      bootstrap = _npmAngular2200Alpha46Angular2.bootstrap;
     }, function (_githubTwbsBootstrap335CssBootstrapCssGithubSystemjsPluginCss0119) {}],
     execute: function () {
       console.time('Load');
