@@ -11,7 +11,7 @@ export function createContent() {
   var template = Handlebars.compile(contentTemplate);
   var html    = template(contentData);
 
-  $('.container').append(html);
+  $('#content').append(html);
 
-  console.timeEnd('Module');
+  console.timeEnd('Module Radar');
 }

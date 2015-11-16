@@ -10,10 +10,10 @@ console.log('jquery: ' + $.fn.jquery);
 console.log('underscore: ' + _.VERSION);
 console.log('backbone: ' + Backbone.VERSION);
 
-$('.btn-primary').on('click', function () {
-  console.time('Module');
+$('#load-radar').on('click', function () {
+  console.time('Module Radar');
 
-  System.import('./modules/content/init.js').then(function(e){
+  System.import('./modules/radar/init.js').then(function(e){
     e.createContent();
   });
 })
