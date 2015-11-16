@@ -22,6 +22,7 @@
       "backbone": "npm:backbone@^1.2.3",
       "bootstrap": "github:twbs/bootstrap@^3.3.5",
       "css": "github:systemjs/plugin-css@^0.1.19",
+      "es6-shim": "github:es-shims/es6-shim@^0.33.11",
       "handlebars": "github:components/handlebars.js@^4.0.4",
       "jquery": "github:components/jquery@^2.1.4",
       "json": "github:systemjs/plugin-json@^0.1.0",
