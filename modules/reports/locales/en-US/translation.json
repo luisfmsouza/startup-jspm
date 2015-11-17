@@ -1,0 +1,11 @@
+{
+  "app": {
+    "name": "Reports"
+  },
+  "nav": {
+    "home": "Reports_Home",
+    "page1": "Reports_Radar",
+    "page2": "Reports_Reports"
+  },
+  "report": "Report from consumer area"
+}

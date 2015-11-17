@@ -23,10 +23,15 @@ System.config({
     "css": "github:systemjs/plugin-css@0.1.19",
     "es6-shim": "github:es-shims/es6-shim@0.33.11",
     "handlebars": "github:components/handlebars.js@4.0.4",
+    "hbs": "github:davis/plugin-hbs@1.2.1",
+    "i18next-client": "npm:i18next-client@1.11.1",
     "jquery": "github:components/jquery@2.1.4",
     "json": "github:systemjs/plugin-json@0.1.0",
     "text": "github:systemjs/plugin-text@0.0.3",
     "underscore": "npm:underscore@1.8.3",
+    "github:davis/plugin-hbs@1.2.1": {
+      "handlebars": "github:components/handlebars.js@4.0.4"
+    },
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
     },

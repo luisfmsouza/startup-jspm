@@ -1,0 +1,10 @@
+{
+  "app": {
+    "name": "Home"
+  },
+  "nav": {
+    "home": "Home",
+    "page1": "Radar",
+    "page2": "Reports"
+  }
+}
