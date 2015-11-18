@@ -15,11 +15,13 @@ var options = {
   debug: true,
   fallbackLng: 'en-US',
   lng: "en-US",
-  load: 'current'
+  load: 'current',
+  ns: 'base',
+  resGetPath: 'modules/__ns__/locales/__lng__/__ns__.json'
 }
 
 i18n.init(options, function(err, t) {
-  console.log(t("app.name"));
+  console.log('T: ' + t("app.name"));
 });
 
 $('.btn-primary').on('click', function () {
