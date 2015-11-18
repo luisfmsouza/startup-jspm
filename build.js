@@ -10647,12 +10647,10 @@ System.register('modules/base/startup.js', ['github:components/jquery@2.1.4', 'n
         lng: 'en-US',
         load: 'current',
         ns: 'base',
-        resGetPath: 'modules/__ns__/locales/__lng__/__ns__.json'
+        resGetPath: 'modules/__ns__/locales/__ns__.__lng__.json'
       };
 
-      i18n.init(options, function (err, t) {
-        console.log('T: ' + t('app.name'));
-      });
+      i18n.init(options);
 
       Handlebars.registerHelper('t', function (i18n_key) {
         var result = i18n.t(i18n_key);

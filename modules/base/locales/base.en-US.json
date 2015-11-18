@@ -1,5 +1,8 @@
 {
   "app": {
+    "name": "JSPM Skeleton"
+  },
+  "page": {
     "name": "Home"
   },
   "nav": {
