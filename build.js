@@ -10641,8 +10641,6 @@ System.register('modules/base/startup.js', ['github:components/jquery@2.1.4', 'n
     execute: function () {
       console.time('Load');
 
-      console.log(Handlebars);
-
       options = {
         debug: true,
         fallbackLng: 'en-US',
@@ -10654,6 +10652,12 @@ System.register('modules/base/startup.js', ['github:components/jquery@2.1.4', 'n
 
       i18n.init(options, function (err, t) {
         console.log('T: ' + t('app.name'));
+      });
+
+      Handlebars.registerHelper('t', function (i18n_key) {
+        var result = i18n.t(i18n_key);
+
+        return new Handlebars.SafeString(result);
       });
 
       $('.btn-primary').on('click', function () {

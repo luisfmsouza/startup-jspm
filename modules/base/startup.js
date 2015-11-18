@@ -17,8 +17,12 @@ var options = {
   resGetPath: 'modules/__ns__/locales/__lng__/__ns__.json'
 }
 
-i18n.init(options, function(err, t) {
-  console.log('T: ' + t('app.name'));
+i18n.init(options);
+
+Handlebars.registerHelper('t', function(i18n_key) {
+  var result = i18n.t(i18n_key);
+
+  return new Handlebars.SafeString(result);
 });
 
 $('.btn-primary').on('click', function () {

@@ -12,30 +12,6 @@ System.config({
     "github:*": "jspm_packages/github/*",
     "npm:*": "jspm_packages/npm/*"
   },
-  bundles: {
-    "build-radar.js": [
-      "modules/radar/init.js",
-      "modules/radar/contentData.json!github:systemjs/plugin-json@0.1.0",
-      "modules/radar/contentTemplate.hbs!github:davis/plugin-hbs@1.2.1",
-      "github:components/handlebars.js@4.0.4/handlebars.runtime"
-    ],
-    "build.js": [
-      "modules/base/startup.js",
-      "github:components/jquery@2.1.4",
-      "npm:underscore@1.8.3",
-      "npm:backbone@1.2.3",
-      "npm:i18next-client@1.11.1",
-      "github:twbs/bootstrap@3.3.5/css/bootstrap.css!github:systemjs/plugin-css@0.1.19",
-      "npm:backbone@1.2.3/backbone",
-      "npm:underscore@1.8.3/underscore",
-      "github:components/jquery@2.1.4/jquery",
-      "npm:i18next-client@1.11.1/i18next",
-      "github:jspm/nodelibs-process@0.1.2",
-      "github:jspm/nodelibs-process@0.1.2/index",
-      "npm:process@0.11.2",
-      "npm:process@0.11.2/browser"
-    ]
-  },
 
   map: {
     "babel": "npm:babel-core@5.8.34",
