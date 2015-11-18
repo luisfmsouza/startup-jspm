@@ -18,17 +18,21 @@ Handlebars.registerHelper('t', function(i18n_key) {
 
 export function createContent() {
 
-  var options = {
-    resGetPath: 'modules/' + moduleName + '/locales/__lng__/__ns__.json',
+  i18n.options = {
     getAsync: false
   };
 
-  i18n.init(options);
+  i18n.loadNamespace('radar', function() {
+    console.log('T: ' + i18n.t("radar:page.name"));
 
-  var template = Handlebars.compile(contentTemplate);
-  var html    = template(contentData);
+    var template = Handlebars.compile(contentTemplate);
+    var html    = template(contentData);
 
-  $('#content').html(html);
+    $('#content').html(html);
+
+  });
+
+  console.log('T: ' + i18n.t("app.name"));
 
   console.timeEnd('Module radar');
 

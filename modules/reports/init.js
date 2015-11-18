@@ -17,15 +17,14 @@ import contentData from './contentData.json!';
 
 export function createContent() {
 
-  i18n.loadNamespace('../../modules/reports/locales/en-US/reports', function() {
-    console.log(i18n.t("../../modules/reports/locales/en-US/reports:page.name"));
-    console.log(i18n);
+  i18n.loadNamespace('reports', function() {
+    console.log(i18n.t("reports:page.name"));
+
+    var template = Handlebars.compile(contentTemplate);
+    var html    = template(contentData);
+
+    $('#content').html(html);
   });
-
-  var template = Handlebars.compile(contentTemplate);
-  var html    = template(contentData);
-
-  $('#content').html(html);
 
   console.timeEnd('Module reports');
 }
