@@ -14,7 +14,7 @@ var options = {
   lng: 'en-US',
   load: 'current',
   ns: 'base',
-  resGetPath: 'modules/__ns__/locales/__lng__/__ns__.json'
+  resGetPath: 'modules/__ns__/locales/__ns__.__lng__.json'
 }
 
 i18n.init(options);
