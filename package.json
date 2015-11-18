@@ -5,12 +5,13 @@
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "bundleAll": "jspm bundle --inject modules/base/startup + modules/content/init",
-    "bundleBase": "jspm bundle --inject modules/base/startup - modules/content/init",
-    "bundleContent": "jspm bundle --inject modules/content/init - modules/base/startup build-content.js",
+    "bundleAll": "jspm bundle --inject modules/base/startup + modules/radar/init + modules/reports/init",
+    "bundleBase": "jspm bundle --inject modules/base/startup - modules/radar/init - modules/reports/init",
+    "bundleRadar": "jspm bundle --inject modules/radar/init - modules/base/startup - modules/reports/init build-radar.js",
+    "bundleReports": "jspm bundle --inject modules/reports/init - modules/base/startup - modules/radar/init build-reports.js",
     "unbundle": "jspm unbundle"
   },
-  "author": "",
+  "author": "Luís Felipe Souza",
   "license": "MIT",
   "devDependencies": {
     "gulp": "^3.9.0",
