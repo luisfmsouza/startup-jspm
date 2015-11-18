@@ -12,16 +12,40 @@ System.config({
     "github:*": "jspm_packages/github/*",
     "npm:*": "jspm_packages/npm/*"
   },
+  bundles: {
+    "build-radar.js": [
+      "modules/radar/init.js",
+      "modules/radar/contentData.json!github:systemjs/plugin-json@0.1.0",
+      "modules/radar/contentTemplate.hbs!github:davis/plugin-hbs@1.2.1",
+      "github:components/handlebars.js@4.0.4/handlebars.runtime"
+    ],
+    "build.js": [
+      "modules/base/startup.js",
+      "github:components/jquery@2.1.4",
+      "npm:underscore@1.8.3",
+      "npm:backbone@1.2.3",
+      "npm:i18next-client@1.11.1",
+      "github:twbs/bootstrap@3.3.5/css/bootstrap.css!github:systemjs/plugin-css@0.1.19",
+      "npm:backbone@1.2.3/backbone",
+      "npm:underscore@1.8.3/underscore",
+      "github:components/jquery@2.1.4/jquery",
+      "npm:i18next-client@1.11.1/i18next",
+      "github:jspm/nodelibs-process@0.1.2",
+      "github:jspm/nodelibs-process@0.1.2/index",
+      "npm:process@0.11.2",
+      "npm:process@0.11.2/browser"
+    ]
+  },
 
   map: {
-    "babel": "npm:babel-core@5.8.33",
-    "babel-runtime": "npm:babel-runtime@5.8.29",
+    "babel": "npm:babel-core@5.8.34",
+    "babel-runtime": "npm:babel-runtime@5.8.34",
     "backbone": "npm:backbone@1.2.3",
     "bootstrap": "github:twbs/bootstrap@3.3.5",
-    "clean-css": "npm:clean-css@3.4.6",
+    "clean-css": "npm:clean-css@3.4.8",
     "core-js": "npm:core-js@1.2.6",
     "css": "github:systemjs/plugin-css@0.1.19",
-    "es6-shim": "github:es-shims/es6-shim@0.33.11",
+    "es6-shim": "github:es-shims/es6-shim@0.33.13",
     "handlebars": "github:components/handlebars.js@4.0.4",
     "hbs": "github:davis/plugin-hbs@1.2.1",
     "i18next-client": "npm:i18next-client@1.11.1",
@@ -36,7 +60,7 @@ System.config({
       "assert": "npm:assert@1.3.0"
     },
     "github:jspm/nodelibs-buffer@0.1.0": {
-      "buffer": "npm:buffer@3.5.1"
+      "buffer": "npm:buffer@3.5.2"
     },
     "github:jspm/nodelibs-events@0.1.1": {
       "events": "npm:events@1.0.2"
@@ -82,19 +106,19 @@ System.config({
     "npm:assert@1.3.0": {
       "util": "npm:util@0.10.3"
     },
-    "npm:babel-runtime@5.8.29": {
+    "npm:babel-runtime@5.8.34": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:backbone@1.2.3": {
       "process": "github:jspm/nodelibs-process@0.1.2",
       "underscore": "npm:underscore@1.8.3"
     },
-    "npm:buffer@3.5.1": {
+    "npm:buffer@3.5.2": {
       "base64-js": "npm:base64-js@0.0.8",
       "ieee754": "npm:ieee754@1.1.6",
       "is-array": "npm:is-array@1.0.1"
     },
-    "npm:clean-css@3.4.6": {
+    "npm:clean-css@3.4.8": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "commander": "npm:commander@2.8.1",
       "fs": "github:jspm/nodelibs-fs@0.1.2",

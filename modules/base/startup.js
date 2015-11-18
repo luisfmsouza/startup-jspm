@@ -3,17 +3,10 @@ console.time('Load');
 import $ from 'jquery';
 import _ from 'underscore';
 import Backbone from 'backbone';
-import handlebars from 'handlebars';
+import Handlebars from 'handlebars/handlebars.runtime';
 import i18n from 'i18next-client';
 
 import 'bootstrap/css/bootstrap.css!';
-
-// Handlebars helper to translate
-Handlebars.registerHelper('t', function(i18n_key) {
-  var result = i18n.t(i18n_key);
-
-  return new Handlebars.SafeString(result);
-});
 
 var options = {
   debug: true,

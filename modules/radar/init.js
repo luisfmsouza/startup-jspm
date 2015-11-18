@@ -1,8 +1,7 @@
 var moduleName = 'radar';
 
 //template
-// import contentTemplateHbs from './contentTemplate.hbs!hbs';
-import contentTemplate from './contentTemplate.hbs!text';
+import contentTemplate from './contentTemplate.hbs!';
 
 //data
 import contentData from './contentData.json!';
@@ -16,8 +15,7 @@ export function createContent() {
   i18n.loadNamespace('radar', function() {
     console.log('T: ' + i18n.t('radar:page.name'));
 
-    var template = Handlebars.compile(contentTemplate);
-    var html    = template(contentData);
+    var html = contentTemplate(contentData);
 
     $('#content').html(html);
 
