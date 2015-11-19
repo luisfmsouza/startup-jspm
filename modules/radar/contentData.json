@@ -1,25 +1,27 @@
 {
   "content": [{
-    "title": "Radar First",
-    "body": "First content",
+    "title": "Find the best opportunities",
+    "author": "Carlos",
+    "body": "Here you can find the best opportunities in the world.",
     "comment": [
       {
-        "title": "First Comment Radar",
-        "body": "I love Handlebars"
+        "title": "Thanks",
+        "body": "Hey, thanks for your post!"
       },
       {
-        "title": "Second Comment Radar",
-        "body": "I hate Handlebars"
+        "title": "I don't agree",
+        "body": "The best opportunities are in other place."
       }
     ]
   },
   {
-    "title": "Radar Second",
-    "body": "Second content",
+    "title": "System updated",
+    "author": "José",
+    "body": "Last weekend we made an update.",
     "comment": [
       {
-        "title": "First Comment Radar",
-        "body": "I love Handlebars"
+        "title": "It's slow",
+        "body": "Hey, take care with updates, now it's slow."
       }
     ]
   }]

@@ -1,32 +1,17 @@
 var moduleName = 'radar';
 
-//template
-
-import Handlebars from 'handlebars/handlebars.runtime';
-
 import contentTemplate from './templates/contentTemplate.hbs!';
-import userMessage from './templates/userMessage.hbs!';
-
-//data
+import contentComments from './templates/contentComments.hbs!';
 import contentData from './contentData.json!';
 
-export function createContent() {
+export function createContent(Handlebars) {
 
   i18n.loadNamespace('radar', function() {
 
-    Handlebars.registerHelper('t', function(i18nKey) {
-      var result = i18n.t(i18nKey);
+    Handlebars.registerPartial('contentComments', contentComments);
 
-      return new Handlebars.SafeString(result);
-    });
-
-    Handlebars.registerPartial('userMessage', userMessage);
-
-    var html = contentTemplate(contentData);
-
-    $('#content').html(html);
+    $('#content').html(contentTemplate(contentData));
   });
 
   console.timeEnd('Module radar');
-
 }

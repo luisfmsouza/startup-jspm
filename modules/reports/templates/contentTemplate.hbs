@@ -1,0 +1,20 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>{{t "reports:label.id"}}</th>
+      <th>{{t "reports:label.firstName"}}</th>
+      <th>{{t "reports:label.lastName"}}</th>
+      <th>{{t "reports:label.username"}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each person}}
+      <tr>
+        <th scope="row">{{id}}</th>
+        <td>{{firstName}}</td>
+        <td>{{lastName}}</td>
+        <td>{{username}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

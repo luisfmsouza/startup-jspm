@@ -1,10 +1,16 @@
 {
-  "content": [{
-    "title": "Reports First",
-    "body": "First content"
-  },
-  {
-    "title": "Reports Second",
-    "body": "Second content"
-  }]
+  "person": [
+    {
+      "id": "1",
+      "name": "Paulo",
+      "lastName": "Silva",
+      "username": "paulo.silva",
+    },
+    {
+      "id": "2",
+      "name": "João",
+      "lastName": "Gilberto",
+      "username": "joao.gilberto",
+    }
+  ]
 }

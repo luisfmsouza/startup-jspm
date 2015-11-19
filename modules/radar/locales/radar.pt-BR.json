@@ -3,8 +3,12 @@
     "name": "Radar"
   },
   "nav": {
-    "home": "Radar_Página Inicial",
-    "page1": "Radar_Radar",
-    "page2": "Radar_Relatórios"
+    "home": "Página Inicial",
+    "page1": "Radar",
+    "page2": "Relatórios"
+  },
+  "label": {
+    "posts": "Postagens",
+    "comments": "Comentários"
   }
 }

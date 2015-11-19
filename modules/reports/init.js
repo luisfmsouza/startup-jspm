@@ -1,18 +1,12 @@
 var moduleName = 'reports';
 
-//template
-import contentTemplate from './contentTemplate.hbs!';
-
-//data
+import contentTemplate from './templates/contentTemplate.hbs!';
 import contentData from './contentData.json!';
 
-export function createContent() {
+export function createContent(Handlebars) {
 
   i18n.loadNamespace('reports', function() {
-
-    var html = contentTemplate(contentData);
-
-    $('#content').html(html);
+    $('#content').html(contentTemplate(contentData));
   });
 
   console.timeEnd('Module reports');

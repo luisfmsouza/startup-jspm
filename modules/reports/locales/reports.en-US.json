@@ -3,9 +3,14 @@
     "name": "Reports"
   },
   "nav": {
-    "home": "Reports_Home",
-    "page1": "Reports_Radar",
-    "page2": "Reports_Reports"
+    "home": "Home",
+    "page1": "Radar",
+    "page2": "Reports"
   },
-  "report": "Report from consumer area"
+  "label": {
+    "id": "#",
+    "firstName": "Name",
+    "lastName": "Last Name",
+    "username": "Username"
+  }
 }
