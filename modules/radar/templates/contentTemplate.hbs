@@ -1,0 +1,17 @@
+<h2>{{"radar:page.name" }}</h2>
+
+{{#each content}}
+  <div class="post">
+
+    <h2>{{title}}</h2>
+    <p>{{body}}</p>
+
+    <h2>Comments</h2>
+
+    {{#each comment}}
+      {{> userMessage}}
+    {{/each}}
+  </div>
+{{/each}}
+
+<a href="#"> back to {{"nav.home" }}</a>

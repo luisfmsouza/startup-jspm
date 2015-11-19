@@ -45,7 +45,7 @@ System.registerDynamic("modules/reports/contentTemplate.hbs!github:davis/plugin-
         "fn": container.program(1, data, 0),
         "inverse": container.noop,
         "data": data
-      })) != null ? stack1 : "") + "\n<a href=\"#\"> back to " + container.escapeExpression((helpers.t || (depth0 && depth0.t) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "app.name", {
+      })) != null ? stack1 : "") + "\n<a href=\"#\"> back to " + container.escapeExpression((helpers.t || (depth0 && depth0.t) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "nav.home", {
         "name": "t",
         "hash": {},
         "data": data
