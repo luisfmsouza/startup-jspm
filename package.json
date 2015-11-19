@@ -5,7 +5,7 @@
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "bundleAll": "jspm bundle --inject modules/base/startup + modules/radar/init + modules/reports/init",
+    "bundleAll": "npm run bundleBase && npm run bundleRadar && npm run bundleReports",
     "bundleBase": "jspm bundle --inject modules/base/startup - modules/radar/init - modules/reports/init",
     "bundleRadar": "jspm bundle --inject modules/radar/init - modules/base/startup - modules/reports/init build-radar.js",
     "bundleReports": "jspm bundle --inject modules/reports/init - modules/base/startup - modules/radar/init build-reports.js",
