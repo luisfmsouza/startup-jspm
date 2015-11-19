@@ -20,7 +20,7 @@ gulp.task('js', function () {
 
 gulp.task('watch', function () {
   gulp.watch(['./*.html'], ['html']);
-  gulp.watch(['./modules/**/*.js', './modules/**/*.json', './*.js'], ['js']);
+  gulp.watch(['./modules/**/*.js', './modules/**/*.json', './*.js', './modules/**.*.hbs'], ['js']);
 });
 
 gulp.task('default', ['connect', 'watch']);
