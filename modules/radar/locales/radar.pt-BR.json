@@ -1,0 +1,10 @@
+{
+  "page": {
+    "name": "Radar"
+  },
+  "nav": {
+    "home": "Radar_Página Inicial",
+    "page1": "Radar_Radar",
+    "page2": "Radar_Relatórios"
+  }
+}

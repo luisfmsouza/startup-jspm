@@ -1,0 +1,13 @@
+{
+  "app": {
+    "name": "JSPM Skeleton"
+  },
+  "page": {
+    "name": "Página Inicial"
+  },
+  "nav": {
+    "home": "Página Inicial",
+    "page1": "Radar",
+    "page2": "Relatórios"
+  }
+}

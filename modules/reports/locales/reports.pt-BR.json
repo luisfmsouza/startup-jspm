@@ -1,0 +1,11 @@
+{
+  "page": {
+    "name": "Relatórios"
+  },
+  "nav": {
+    "home": "Radar_Página Inicial",
+    "page1": "Radar_Radar",
+    "page2": "Radar_Relatórios"
+  },
+  "report": "Relatório de área de consumo"
+}
