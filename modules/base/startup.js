@@ -4,6 +4,7 @@ import $ from 'jquery';
 import _ from 'underscore';
 import Backbone from 'backbone';
 import Handlebars from 'handlebars/handlebars.runtime';
+// import Handlebars from 'handlebars';
 import i18n from 'i18next-client';
 
 import 'bootstrap/css/bootstrap.css!';
@@ -19,8 +20,8 @@ var options = {
 
 i18n.init(options);
 
-Handlebars.registerHelper('t', function(i18n_key) {
-  var result = i18n.t(i18n_key);
+Handlebars.registerHelper('t', function(i18nKey) {
+  var result = i18n.t(i18nKey);
 
   return new Handlebars.SafeString(result);
 });
