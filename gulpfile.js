@@ -9,7 +9,7 @@ gulp.task('connect', function() {
 });
 
 gulp.task('watch', function () {
-  gulp.watch(['*.*'], function (event) {
+  gulp.watch(['*.*', 'modules/**/*.*'], function (event) {
     gulp.src(event.path)
       .pipe(connect.reload());
   });
