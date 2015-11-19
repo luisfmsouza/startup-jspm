@@ -10649,8 +10649,6 @@ System.register('modules/base/startup.js', ['github:components/jquery@2.1.4', 'n
         resGetPath: 'modules/__ns__/locales/__ns__.__lng__.json'
       };
 
-      options.lng = 'pt-BR';
-
       i18n.init(options);
 
       Handlebars.registerHelper('t', function (i18nKey) {

@@ -1,4 +1,4 @@
-System.registerDynamic("modules/radar/contentData.json!github:systemjs/plugin-json@0.1.0", [], true, function($__require, exports, module) {
+System.registerDynamic("modules/posts/contentData.json!github:systemjs/plugin-json@0.1.0", [], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
@@ -27,7 +27,7 @@ System.registerDynamic("modules/radar/contentData.json!github:systemjs/plugin-js
   return module.exports;
 });
 
-System.registerDynamic("modules/radar/templates/contentComments.hbs!github:davis/plugin-hbs@1.2.1", ["github:components/handlebars.js@4.0.4/handlebars.runtime"], true, function($__require, exports, module) {
+System.registerDynamic("modules/posts/templates/contentComments.hbs!github:davis/plugin-hbs@1.2.1", ["github:components/handlebars.js@4.0.4/handlebars.runtime"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
@@ -52,7 +52,7 @@ System.registerDynamic("modules/radar/templates/contentComments.hbs!github:davis
   return module.exports;
 });
 
-System.registerDynamic("modules/radar/templates/contentTemplate.hbs!github:davis/plugin-hbs@1.2.1", ["github:components/handlebars.js@4.0.4/handlebars.runtime"], true, function($__require, exports, module) {
+System.registerDynamic("modules/posts/templates/contentTemplate.hbs!github:davis/plugin-hbs@1.2.1", ["github:components/handlebars.js@4.0.4/handlebars.runtime"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
@@ -73,7 +73,7 @@ System.registerDynamic("modules/radar/templates/contentTemplate.hbs!github:davis
         "name": "body",
         "hash": {},
         "data": data
-      }) : helper))) + "</p>\n  </div>\n\n  <h2>" + container.escapeExpression((helpers.t || (depth0 && depth0.t) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "radar:label.comments", {
+      }) : helper))) + "</p>\n  </div>\n\n  <h2>" + container.escapeExpression((helpers.t || (depth0 && depth0.t) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "posts:label.comments", {
         "name": "t",
         "hash": {},
         "data": data
@@ -99,7 +99,7 @@ System.registerDynamic("modules/radar/templates/contentTemplate.hbs!github:davis
     "compiler": [7, ">= 4.0.0"],
     "main": function(container, depth0, helpers, partials, data) {
       var stack1;
-      return "<h2>" + container.escapeExpression((helpers.t || (depth0 && depth0.t) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "radar:label.posts", {
+      return "<h2>" + container.escapeExpression((helpers.t || (depth0 && depth0.t) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "posts:label.posts", {
         "name": "t",
         "hash": {},
         "data": data
@@ -122,7 +122,7 @@ System.registerDynamic("modules/radar/templates/contentTemplate.hbs!github:davis
   return module.exports;
 });
 
-System.register('modules/radar/init.js', ['modules/radar/templates/contentTemplate.hbs!github:davis/plugin-hbs@1.2.1', 'modules/radar/templates/contentComments.hbs!github:davis/plugin-hbs@1.2.1', 'modules/radar/contentData.json!github:systemjs/plugin-json@0.1.0'], function (_export) {
+System.register('modules/posts/init.js', ['modules/posts/templates/contentTemplate.hbs!github:davis/plugin-hbs@1.2.1', 'modules/posts/templates/contentComments.hbs!github:davis/plugin-hbs@1.2.1', 'modules/posts/contentData.json!github:systemjs/plugin-json@0.1.0'], function (_export) {
   'use strict';
 
   var contentTemplate, contentComments, contentData, moduleName;
@@ -131,27 +131,27 @@ System.register('modules/radar/init.js', ['modules/radar/templates/contentTempla
 
   function createContent(Handlebars) {
 
-    i18n.loadNamespace('radar', function () {
+    i18n.loadNamespace('posts', function () {
 
       Handlebars.registerPartial('contentComments', contentComments);
 
       $('#content').html(contentTemplate(contentData));
     });
 
-    console.timeEnd('Module radar');
+    console.timeEnd('Module posts');
   }
 
   return {
-    setters: [function (_modulesRadarTemplatesContentTemplateHbsGithubDavisPluginHbs121) {
-      contentTemplate = _modulesRadarTemplatesContentTemplateHbsGithubDavisPluginHbs121['default'];
-    }, function (_modulesRadarTemplatesContentCommentsHbsGithubDavisPluginHbs121) {
-      contentComments = _modulesRadarTemplatesContentCommentsHbsGithubDavisPluginHbs121['default'];
-    }, function (_modulesRadarContentDataJsonGithubSystemjsPluginJson010) {
-      contentData = _modulesRadarContentDataJsonGithubSystemjsPluginJson010['default'];
+    setters: [function (_modulesPostsTemplatesContentTemplateHbsGithubDavisPluginHbs121) {
+      contentTemplate = _modulesPostsTemplatesContentTemplateHbsGithubDavisPluginHbs121['default'];
+    }, function (_modulesPostsTemplatesContentCommentsHbsGithubDavisPluginHbs121) {
+      contentComments = _modulesPostsTemplatesContentCommentsHbsGithubDavisPluginHbs121['default'];
+    }, function (_modulesPostsContentDataJsonGithubSystemjsPluginJson010) {
+      contentData = _modulesPostsContentDataJsonGithubSystemjsPluginJson010['default'];
     }],
     execute: function () {
-      moduleName = 'radar';
+      moduleName = 'posts';
     }
   };
 });
-//# sourceMappingURL=build-radar.js.map
+//# sourceMappingURL=build-posts.js.map

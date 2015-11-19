@@ -1,10 +1,10 @@
 {
   "page": {
-    "name": "Radar"
+    "name": "Posts"
   },
   "nav": {
     "home": "Home",
-    "page1": "Radar",
+    "page1": "Posts",
     "page2": "Reports"
   },
   "label": {

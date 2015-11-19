@@ -15,25 +15,25 @@ System.config({
   bundles: {
     "build.js": [
       "modules/base/startup.js",
-      "npm:underscore@1.8.3",
       "npm:backbone@1.2.3",
-      "github:components/jquery@2.1.4",
       "npm:i18next-client@1.11.1",
-      "npm:underscore@1.8.3/underscore",
-      "npm:backbone@1.2.3/backbone",
-      "github:components/jquery@2.1.4/jquery",
+      "github:components/jquery@2.1.4",
+      "npm:underscore@1.8.3",
       "github:twbs/bootstrap@3.3.5/css/bootstrap.css!github:systemjs/plugin-css@0.1.19",
+      "npm:backbone@1.2.3/backbone",
       "npm:i18next-client@1.11.1/i18next",
+      "npm:underscore@1.8.3/underscore",
+      "github:components/jquery@2.1.4/jquery",
       "github:jspm/nodelibs-process@0.1.2",
       "github:jspm/nodelibs-process@0.1.2/index",
       "npm:process@0.11.2",
       "npm:process@0.11.2/browser"
     ],
-    "build-radar.js": [
-      "modules/radar/init.js",
-      "modules/radar/contentData.json!github:systemjs/plugin-json@0.1.0",
-      "modules/radar/templates/contentComments.hbs!github:davis/plugin-hbs@1.2.1",
-      "modules/radar/templates/contentTemplate.hbs!github:davis/plugin-hbs@1.2.1"
+    "build-posts.js": [
+      "modules/posts/init.js",
+      "modules/posts/contentData.json!github:systemjs/plugin-json@0.1.0",
+      "modules/posts/templates/contentTemplate.hbs!github:davis/plugin-hbs@1.2.1",
+      "modules/posts/templates/contentComments.hbs!github:davis/plugin-hbs@1.2.1"
     ],
     "build-reports.js": [
       "modules/reports/init.js",
