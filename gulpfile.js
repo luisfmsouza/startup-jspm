@@ -3,24 +3,16 @@ var gulp = require('gulp'),
 
 gulp.task('connect', function() {
   connect.server({
-    root: './',
+    root: __dirname,
     livereload: true
   });
 });
 
-gulp.task('html', function () {
-  gulp.src('./*.html')
-    .pipe(connect.reload());
-});
-
-gulp.task('js', function () {
-  gulp.src('./*.js')
-    .pipe(connect.reload());
-});
-
 gulp.task('watch', function () {
-  gulp.watch(['./*.html'], ['html']);
-  gulp.watch(['./modules/**/*.js', './modules/**/*.json', './*.js', './modules/**.*.hbs'], ['js']);
+  gulp.watch(['*.*'], function (event) {
+    gulp.src(event.path)
+      .pipe(connect.reload());
+  });
 });
 
 gulp.task('default', ['connect', 'watch']);
