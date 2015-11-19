@@ -1,6 +1,9 @@
 var moduleName = 'radar';
 
 //template
+
+import Handlebars from 'handlebars/handlebars.runtime';
+
 import contentTemplate from './templates/contentTemplate.hbs!';
 import userMessage from './templates/userMessage.hbs!';
 

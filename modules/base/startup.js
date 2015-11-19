@@ -3,7 +3,6 @@ console.time('Load');
 import $ from 'jquery';
 import _ from 'underscore';
 import Backbone from 'backbone';
-import Handlebars from 'handlebars/handlebars.runtime';
 import i18n from 'i18next-client';
 
 import 'bootstrap/css/bootstrap.css!';
